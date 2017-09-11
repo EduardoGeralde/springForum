@@ -6,19 +6,36 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
 		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd">
-	<mvc:annotation-driven />
-	<context:annotation-config />
-	<context:component-scan
-    base-package="com.eduardoPortfolio.springForum.controllers"/>
-    //tells where the static content can be found. (images, css, JS, etc)
-	<mvc:resources location="/resources/" mapping="/resources/**" cache-period="120"/>
 	
-	<!-- Não é preciso definir um nome para este bean, pois
-    o Spring MVC busca beans do tipo ViewResolver pelo tipo -->
+	<!-- Enable Spring MVC to work based on annotations -->
+	<mvc:annotation-driven />
+	<!-- Enable annotations on Spring IoT/DI -->
+	<context:annotation-config />
+	<!-- Search for @Controller components type in the package below -->
+	<context:component-scan base-package="com.eduardoPortfolio.springForum.controllers"/>
+    <!--tells where the static content can be found. (images, css, JS, etc)-->
+	<mvc:resources location="/resources/" mapping="/resources/**" cache-period="120"/>
+	<!-- We don't have to define name, Spring MVC search for type, ViewResolver in this case
+	We change this View Resolver to the another one below, to work with Tiles
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
     <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
     <property name="prefix" value="/views"/>
     <property name="suffix" value=".jsp"/>
+	</bean> -->
+	 <!-- Changing the View Resolver to use Tiles-->
+	 <bean id="tilesViewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+    	<property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView"/>
 	</bean>
-
+	<!-- We to tell Tiles which configuration files it will use. We don't need to provide name
+	because our View Resolver configured through Tiles will always search for another
+	TilesConfigurer bean to work correctly -->
+	 <bean class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+		<property name="definitions">
+			<list>
+				<value>/tiles/tiles-config.xml</value>
+			</list>
+		</property>
+	</bean>
+	
+	
 </beans>
