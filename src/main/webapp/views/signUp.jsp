@@ -14,7 +14,7 @@
 	<sf:input path="login"/>
 	
 	<label for="password">Password:</label>
-	<sf:input path="password"/>
+	<sf:password path="password"/>
 	
 	<input type="submit" value="Save"/>
 	
