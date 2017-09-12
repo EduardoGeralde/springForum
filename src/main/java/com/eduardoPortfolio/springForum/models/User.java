@@ -1,11 +1,23 @@
 package com.eduardoPortfolio.springForum.models;
 
-@Entity
+import java.util.Date;
+
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 public class User {
 	
 	private Long id;
+	@Size(max=128) @NotNull @NotEmpty
 	private String name;
+	@Email(message="This is not a valid email") @NotNull @NotEmpty
 	private String email;
+	@NotNull
+	private Date registryDate;
+	@NotNull @NotEmpty
+	@Size(min=8, max=32, message="Only accept min. 8 and max. 32 characters")
 	private String login;
 	private String password;
 	
