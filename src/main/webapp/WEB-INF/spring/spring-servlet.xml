@@ -43,4 +43,24 @@
 		<property name="maxUploadSize" value="1048576"/>
 	</bean>
 	
+	<!-- ConnectionPool -->
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+    destroy-method="close">
+	    <property name="driverClass" value="com.mysql.jdbc.Driver"/>
+	    <property name="user" value="root"/>
+	    <property name="password" value="password"/>
+	    <property name="jdbcUrl"
+	        value="jdbc:mysql://localhost:3306/springforum"/>
+	    <property name="maxPoolSize" value="10"/>
+	    <property name="acquireIncrement" value="1"/>
+	    <property name="maxIdleTime" value="120"/>
+	    <property name="acquireRetryAttempts" value="10"/>
+	    <property name="initialPoolSize" value="10"/>
+	</bean>
+	
+	<!-- Together with @Repository, the exception is intercepted and automatically converted
+	to another in the Spring Exception Hierarchy -->
+	<bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>
+	
+	
 </beans>
