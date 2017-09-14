@@ -20,4 +20,6 @@
         <put-attribute name="title" value="Welcome!"/>
     </definition>
     
+    <definition name="user/posts" template="/views/user/userPosts.jsp"/>
+    
 </tiles-definitions>
