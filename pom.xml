@@ -93,12 +93,20 @@
 	    <version>4.3.10.RELEASE</version>
 	</dependency>
 	
+	<!-- https://mvnrepository.com/artifact/com.mchange/c3p0 -->
+	<dependency>
+	    <groupId>com.mchange</groupId>
+	    <artifactId>c3p0</artifactId>
+	    <version>0.9.5.2</version>
+	</dependency>
+	
 	<!-- https://mvnrepository.com/artifact/org.springframework/spring-orm -->
 	<dependency>
 	    <groupId>org.springframework</groupId>
 	    <artifactId>spring-orm</artifactId>
 	    <version>4.3.10.RELEASE</version>
 	</dependency>
+	
 	
   </dependencies>
 </project>
