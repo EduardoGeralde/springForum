@@ -23,7 +23,16 @@
 		
 		<security:intercept-url pattern="/posts/**"
 		   					    access="ROLE_MEMBRO" requires-channel="any"/>
-		-->
+		-->	
 	</security:http>
+	
+	<security:authentication-manager>
+		<security:authentication-provider>
+			<security:user-service>
+		    	<security:user name="bruce" password="lee" authorities="ROLE_MEMBRO"/>
+		        <security:user name="admin" password="admin" authorities="ROLE_MEMBRO,ROLE_ADMIN"/>
+		    </security:user-service>
+		</security:authentication-provider>
+	</security:authentication-manager>
 			
 </beans>
